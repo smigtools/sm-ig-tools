@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SM IG TOOLS</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(180deg, #0b1021 0%, #1a163a 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            padding-bottom: 90px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+        .brand {
+            background-color: #000000;
+            color: #eab308;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 18px;
+            border: 1px solid #333;
+        }
+        .wallet {
+            background-color: #facc15;
+            color: #000;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        .view-panel {
+            display: none;
+            padding: 0 15px;
+        }
+        .view-panel.active {
+            display: block;
+        }
+        .page-title {
+            text-align: center;
+            font-size: 22px;
+            margin: 20px 0;
+            font-weight: 700;
+        }
+        .card-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .item-card {
+            background-color: #121212;
+            border: 1px solid #2a2a35;
+            border-radius: 12px;
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        .item-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 17px;
+            font-weight: 600;
+        }
+        .price-tag {
+            color: #facc15;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .badge-discount {
+            background-color: #ef4444;
+            color: white;
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-right: 5px;
+        }
+        .checkout-box {
+            background-color: #121212;
+            border-radius: 12px;
+            border: 1px solid #2a2a35;
+            padding: 20px;
+            margin-top: 15px;
+        }
+        .summary-header {
+            border-left: 4px solid #10b981;
+            padding-left: 12px;
+            margin-bottom: 20px;
+        }
+        .input-field {
+            background: #1a1a1f;
+            border: 1px solid #333;
+            width: 100%;
+            padding: 14px;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+        }
+        .btn-action {
+            background-color: #10b981;
+            color: white;
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .gateway-container {
+            background-color: #121212;
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            max-width: 400px;
+            margin: 20px auto;
+            border: 1px solid #2a2a35;
+        }
+        .qr-placeholder {
+            background: white;
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .qr-placeholder img {
+            width: 100%;
+            height: 100%;
+        }
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #0d1117;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px 0;
+            border-top: 1px solid #222;
+        }
+        .nav-item {
+            text-align: center;
+            color: #888;
+            font-size: 12px;
+        }
+        .nav-fab {
+            background-color: #10b981;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .back-btn {
+            background: none;
+            border: none;
+            color: #0ea5e9;
+            font-size: 16px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="brand">SM IG TOOLS</div>
+        <div class="wallet">₹1.50</div>
+    </div>
+
+    <div id="main-services" class="view-panel active">
+        <div class="page-title">Our Services</div>
+        <div class="card-list">
+            <div class="item-card" onclick="openSubServices('Instagram')">
+                <div class="item-info"><span>📸</span> Instagram</div>
+                <div style="color: #0ea5e9;">›</div>
+            </div>
+            <div class="item-card" onclick="alert('Facebook section setup lock la iruku')">
+                <div class="item-info"><span>📘</span> Facebook</div>
+                <div style="color: #0ea5e9;">›</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="sub-services" class="view-panel">
+        <button class="back-btn" onclick="switchView('main-services')">← Back to Menu</button>
+        <div class="page-title" id="sub-service-title">SM IG TOOLS Services</div>
+        <div class="card-list">
+            <div class="item-card" onclick="openQuantitySelector('Followers')">
+                <div class="item-info"><span>👥</span> Instagram Followers</div>
+                <div style="color: #0ea5e9;">›</div>
+            </div>
+            <div class="item-card" onclick="openQuantitySelector('Views')">
+                <div class="item-info"><span>👁️</span> Instagram Views</div>
+                <div style="color: #0ea5e9;">›</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="quantity-select" class="view-panel">
+        <button class="back-btn" onclick="switchView('sub-services')">← Back</button>
+        <div class="page-title">Select Quantity</div>
+        <div class="card-list" id="dynamic-rates-list"></div>
+    </div>
+
+    <div id="add-funds" class="view-panel">
+        <button class="back-btn" onclick="switchView('quantity-select')">← Change Pack</button>
+        <h2>Confirm Order</h2>
+        <div class="checkout-box">
+            <div class="summary-header">
+                <div style="color: #10b981; font-weight: bold; font-size: 14px;">Order Summary ✅</div>
+                <div style="font-size: 16px; margin-top: 5px;" id="summary-pack-name">Loading pack info...</div>
+                <div style="color: #facc15; font-weight: bold; font-size: 18px; margin-top: 5px;" id="summary-pack-price">₹0.00</div>
+            </div>
+
+            <label style="display:block; margin-bottom:8px; color:#aaa; font-size:14px;">Paste Target Profile / Post Link</label>
+            <input type="text" class="input-field" placeholder="https://www.instagram.com/..." id="target-link">
+
+            <button class="btn-action" onclick="goToGateway()">Submit & Generate QR Code 🔗</button>
+        </div>
+    </div>
+
+    <div id="gateway" class="view-panel">
+        <div class="gateway-container">
+            <h3 style="margin: 0 0 5px 0;">SM IG TOOLS Pay <span style="color:#0ea5e9;">✓</span></h3>
+            <hr style="border-color: #222; margin-bottom: 20px;">
+            
+            <div class="qr-placeholder">
+                <img id="upi-qr-image" src="" alt="Scan to Pay">
+            </div>
+            
+            <div style="font-size: 28px; font-weight: bold; margin: 15px 0; color: #10b981;" id="gateway-amount">₹0.00</div>
+            <div style="color: #ccc; font-size: 13px; margin-bottom: 20px;">Scan QR with PhonePe, GPay or Paytm to complete order.</div>
+            
+            <button class="btn-action" style="background-color: #ef4444;" onclick="switchView('main-services')">Cancel Payment</button>
+        </div>
+    </div>
+
+    <div class="bottom-nav">
+        <div class="nav-item" onclick="switchView('main-services')">
+            <div style="font-size: 20px;">📦</div>My Orders
+        </div>
+        <div class="nav-fab" onclick="switchView('main-services')">
+            <span>+</span> Create Order
+        </div>
+        <div class="nav-item" onclick="alert('Menu options triggered')">
+            <div style="font-size: 20px;">☰</div>Menu
+        </div>
+    </div>
+
+    <script>
+        const pricingData = {
+            Followers: [
+                { label: "DEMO: 100 Followers", price: 20, badge: "Demo Pack" },
+                { label: "1K Followers", price: 150, badge: "" },
+                { label: "2K Followers", price: 200, badge: "" },
+                { label: "3K Followers", price: 300, badge: "" },
+                { label: "5K Followers", price: 350, badge: "Best Value" },
+                { label: "10K Followers", price: 450, badge: "Mega Pack" }
+            ],
+            Views: [
+                { label: "1K VIEWS (High Retention)", price: 10, badge: "" },
+                { label: "10K VIEWS (High Retention)", price: 99, badge: "" },
+                { label: "20K VIEWS (High Retention)", price: 199, badge: "" },
+                { label: "30K VIEWS (High Retention)", price: 275, badge: "" },
+                { label: "40K VIEWS (High Retention)", price: 350, badge: "" },
+                { label: "50K VIEWS (High Retention)", price: 399, badge: "Popular" },
+                { label: "100K VIEWS (High Retention)", price: 400, badge: "Bumper Offer" }
+            ]
+        };
+
+        let selectedPack = { name: "", price: 0 };
+
+        function switchView(viewId) {
+            document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
+            document.getElementById(viewId).classList.add('active');
+        }
+
+        function openSubServices(platform) {
+            document.getElementById('sub-service-title').innerText = "SM IG TOOLS Services";
+            switchView('sub-services');
+        }
+
+        function openQuantitySelector(type) {
+            const listContainer = document.getElementById('dynamic-rates-list');
+            listContainer.innerHTML = "";
+            const selectedRates = pricingData[type];
+            
+            selectedRates.forEach(item => {
+                const card = document.createElement('div');
+                card.className = "item-card";
+                card.onclick = () => selectPackTarget(item.label, item.price);
+                let badgeHTML = item.badge ? `<span class="badge-discount">${item.badge}</span>` : '';
+                card.innerHTML = `
+                    <div class="item-info"><div><span style="display:block; font-size:15px;">${item.label}</span></div></div>
+                    <div>${badgeHTML}<span class="price-tag">₹${item.price}</span></div>
+                `;
+                listContainer.appendChild(card);
+            });
+            switchView('quantity-select');
+        }
+
+        function selectPackTarget(name, price) {
+            selectedPack.name = name;
+            selectedPack.price = price;
+            document.getElementById('summary-pack-name').innerText = name;
+            document.getElementById('summary-pack-price').innerText = "₹" + price + ".00";
+            switchView('add-funds');
+        }
+
+        function goToGateway() {
+            const linkInput = document.getElementById('target-link').value;
+            if(!linkInput.trim()) {
+                alert("Please paste your Instagram profile or post link first!");
+                return;
+            }
+            document.getElementById('gateway-amount').innerText = "₹" + selectedPack.price + ".00";
+            const upiID = "supriyan9500-2@okaxis"; 
+            const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=upi://pay?pa=${upiID}&pn=Madhu&am=${selectedPack.price}&tn=SM_IG_TOOLS_ORDER`;
+            document.getElementById('upi-qr-image').src = qrUrl;
+            switchView('gateway');
+        }
+    </script>
+</body>
+</html>
+

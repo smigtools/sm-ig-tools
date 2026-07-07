@@ -178,7 +178,7 @@
 
     <div class="header">
         <div class="brand">SM IG TOOLS</div>
-        <div class="wallet">₹1.50</div>
+        <div class="wallet">₹0.00</div>
     </div>
 
     <div id="main-services" class="view-panel active">
@@ -332,7 +332,25 @@
             const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=upi://pay?pa=${upiID}&pn=Madhu&am=${selectedPack.price}&tn=SM_IG_TOOLS_ORDER`;
             document.getElementById('upi-qr-image').src = qrUrl;
             switchView('gateway');
+        }function startTimer() {
+    let timeLeft = 300;
+    let timerId = setInterval(() => {
+        timeLeft--;
+        let m = Math.floor(timeLeft / 60);
+        let s = timeLeft % 60;
+
+        document.getElementById("timer").innerText =
+            m + ":" + (s < 10 ? "0" + s : s);
+
+        if (timeLeft <= 0) {
+            clearInterval(timerId);
+            alert("Time Expired!");
         }
+    }, 1000);
+}
+</script>
+</body>
+</html>
     </script>
 </body>
 </html>

@@ -332,50 +332,7 @@
             const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=upi://pay?pa=${upiID}&pn=Madhu&am=${selectedPack.price}&tn=SM_IG_TOOLS_ORDER`;
             document.getElementById('upi-qr-image').src = qrUrl;
             switchView('gateway');
-            <!-- My Orders Section -->
-<div id="my-orders" class="view-panel">
-    <div class="page-title">My Orders</div>
-    <div class="card-list" id="orders-list">
-        <div class="item-card">
-            <div>
-                <div style="font-weight:bold;">Instagram Followers</div>
-                <div style="font-size: 12px; color: #aaa;">#Order ID: 3016</div>
-            </div>
-            <div style="background: #065f46; color: #34d399; padding: 4px 8px; border-radius: 6px; font-size: 12px;">COMPLETED</div>
-        </div>
-    </div>
-</div>
-
-<!-- Updated Gateway with Pay Now -->
-<div id="gateway" class="view-panel">
-    <div class="gateway-container">
-        <h3>UPI Payment</h3>
-        <div class="qr-placeholder"><img id="upi-qr-image" src="" alt="QR"></div>
-        <div style="font-size: 24px; font-weight: bold; margin: 10px 0;" id="gateway-amount">₹0.00</div>
-        
-        <a id="pay-now-btn" href="#" class="btn-action" style="display:block; text-decoration:none; margin-bottom:10px; background-color:#0ea5e9;">Pay Now (Open UPI App)</a>
-        
-        <button class="btn-action" style="background-color: #444;" onclick="switchView('main-services')">Cancel Payment</button>
-    </div>
-</div>
-
-<script>
-    function showMyOrders() {
-        switchView('my-orders');
-    }
-    
-    function goToGateway(amount) {
-        const upiLink = `upi://pay?pa=your-upi-id@okaxis&pn=StoreName&am=${amount}`;
-        document.getElementById('pay-now-btn').href = upiLink;
-        switchView('gateway');
-        
-    }<!- Updated Gateway with Pay Now --> <div id="gateway" class="view-panel"> <div class="gateway-container"> <h3>UPI Payment</h3>
-
-<div class="qr-placeholder"><img id="upi-qr-image" src=" alt="QR"></div>
-
-<div style="font-size: 24px; font-weight: bold; margin: 10px 0;" id="gateway-amount">0.00</div>
-</script>
         }
     </script>
 </body>
-        </html>
+</html>

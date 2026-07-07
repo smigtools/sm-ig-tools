@@ -332,7 +332,7 @@
             const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=upi://pay?pa=${upiID}&pn=Madhu&am=${selectedPack.price}&tn=SM_IG_TOOLS_ORDER`;
             document.getElementById('upi-qr-image').src = qrUrl;
             switchView('gateway');
-        }<!-- My Orders Section -->
+            <!-- My Orders Section -->
 <div id="my-orders" class="view-panel">
     <div class="page-title">My Orders</div>
     <div class="card-list" id="orders-list">
@@ -370,6 +370,7 @@
         switchView('gateway');
     }
 </script>
+        }
     </script>
 </body>
-</html>
+        </html>

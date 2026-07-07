@@ -368,7 +368,12 @@
         const upiLink = `upi://pay?pa=your-upi-id@okaxis&pn=StoreName&am=${amount}`;
         document.getElementById('pay-now-btn').href = upiLink;
         switchView('gateway');
-    }
+        
+    }<!- Updated Gateway with Pay Now --> <div id="gateway" class="view-panel"> <div class="gateway-container"> <h3>UPI Payment</h3>
+
+<div class="qr-placeholder"><img id="upi-qr-image" src=" alt="QR"></div>
+
+<div style="font-size: 24px; font-weight: bold; margin: 10px 0;" id="gateway-amount">0.00</div>
 </script>
         }
     </script>

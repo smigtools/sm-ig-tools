@@ -90,21 +90,29 @@
             switchView('sub-services');
         }
         function goToGateway() {
-            if(!document.getElementById('target-link').value.trim()) return alert("Paste IG Link!");
-            document.getElementById('gateway-amount').innerText = "₹" + selectedPack.price;
-            document.getElementById('upi-qr-image').src = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=upi://pay?pa=7094462812@okaxis&am=${selectedPack.price}`;
-            switchView('gateway');
-            startTimer();
+    if(!document.getElementById('target-link').value.trim()) return alert("Paste IG Link!");
+    document.getElementById('gateway-amount').innerText = "₹" + selectedPack.price;
+    document.getElementById('upi-qr-image').src = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=upi://pay?pa=7094462812@okaxis&am=${selectedPack.price}`;
+    switchView('gateway');
+    startTimer();
+}
+
+function startTimer() {
+    let timeLeft = 300;
+    let timerId = setInterval(() => {
+        timeLeft--;
+        let m = Math.floor(timeLeft / 60);
+        let s = timeLeft % 60;
+
+        document.getElementById("timer").innerText =
+            m + ":" + (s < 10 ? "0" + s : s);
+
+        if (timeLeft <= 0) {
+            clearInterval(timerId);
+            alert("Time Expired!");
         }
-        function startTimer() {
-            let timeLeft = 300;
-            let timerId = setInterval(() => {
-                timeLeft--;
-                let m = Math.floor(timeLeft / 60); let s = timeLeft % 60;
-                document.getElementById("timer").innerText = m + ":" + (s < 10 ? "0" + s : s);
-                if (timeLeft <= 0) { clearInterval(timerId); alert("Time Expired!"); }
-            }, 1000);
-        }
-    </script>
+    }, 1000);
+}
+</script>
 </body>
 </html>
